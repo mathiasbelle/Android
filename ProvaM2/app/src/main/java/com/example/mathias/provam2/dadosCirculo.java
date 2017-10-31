@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class dadosCirculo extends AppCompatActivity {
 
@@ -16,13 +17,20 @@ public class dadosCirculo extends AppCompatActivity {
 
     public void clicouCalcularCirculo(View quemClicou){
         EditText entradaRaio = (EditText) findViewById(R.id.etRaio);
-        double resultado = Double.parseDouble(entradaRaio.getText().toString());
-        resultado = 3.14*resultado*resultado;
+        double resultado;
+
+        try {
+            resultado = Double.parseDouble(entradaRaio.getText().toString());
+            resultado = 3.14 * resultado * resultado; // pi*r*r
+        }catch (Exception e){
+            Toast erro = Toast.makeText(getApplicationContext(), "Entrada inválida!", Toast.LENGTH_SHORT);
+            erro.show();
+            return;
+        }
 
         Bundle mochila = new Bundle(getClassLoader());
         mochila.putDouble("resultado", resultado);
-        int id = 2;
-        mochila.putInt("id", id);
+        mochila.putInt("id", 2);
         Intent intencao = new Intent(this, telaResultado.class);
         intencao.putExtras(mochila);
         startActivity(intencao);

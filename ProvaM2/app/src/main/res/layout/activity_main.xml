@@ -17,27 +17,26 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <RadioButton
-            android:id="@+id/rbQuadrado"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Quadrado" />
+        app:layout_constraintHorizontal_bias="0.036"
+        app:layout_constraintVertical_bias="0.067"
+        app:layout_constraintTop_toBottomOf="@+id/textView6">
 
         <RadioButton
             android:id="@+id/rbTriangulo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Triangulo" />
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:text="Triângulo" />
+
+        <RadioButton
+            android:id="@+id/rbRetangulo"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:text="Retângulo" />
 
         <RadioButton
             android:id="@+id/rbCirculo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
             android:text="Círculo" />
     </RadioGroup>
 
@@ -57,4 +56,21 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.982" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Selecione a forma"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.031"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.016" />
 </android.support.constraint.ConstraintLayout>

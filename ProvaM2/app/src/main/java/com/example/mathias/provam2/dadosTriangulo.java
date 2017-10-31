@@ -18,20 +18,23 @@ public class dadosTriangulo extends AppCompatActivity {
     public void clicouCalcularTriangulo(View quemClicou){
         EditText baseText = (EditText) findViewById(R.id.etBase);
         EditText alturaText = (EditText) findViewById(R.id.etAltura);
-        double base = Double.parseDouble(baseText.getText().toString());
-        double altura = Double.parseDouble(alturaText.getText().toString());
-        double resultado = base*altura/2;
-        String u = ""+resultado;
-        //Toast t1 = Toast.makeText(getApplicationContext(), u, Toast.LENGTH_SHORT);
+        double resultado;
+
+        try{
+        resultado = Double.parseDouble(baseText.getText().toString()) * Double.parseDouble(alturaText.getText().toString()) /2; //base*altura/2
+        }catch (Exception e){
+            Toast erro = Toast.makeText(getApplicationContext(), "Entrada inválida!", Toast.LENGTH_SHORT);
+            erro.show();
+            return;
+        }
+
         Bundle mochila = new Bundle(getClassLoader());
         mochila.putDouble("resultado", resultado);
         Intent intencao = new Intent(this, telaResultado.class);
-        int id = 1;
-        mochila.putInt("id", id);
+        mochila.putInt("id", 1);
 
         intencao.putExtras(mochila);
         startActivity(intencao);
-
 
     }
 }

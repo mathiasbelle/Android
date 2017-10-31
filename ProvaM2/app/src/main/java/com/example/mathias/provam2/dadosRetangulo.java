@@ -7,32 +7,34 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class dadosQuadrado extends AppCompatActivity {
+public class dadosRetangulo extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dados_quadrado);
+        setContentView(R.layout.activity_dados_retangulo);
     }
 
-    public void clicouCalcular(View quemClicou){
+    public void clicouCalcularRetangulo(View quemClicou){
         EditText baseText = (EditText) findViewById(R.id.etBase);
         EditText alturaText = (EditText) findViewById(R.id.etAltura);
-        double base = Double.parseDouble(baseText.getText().toString());
-        double altura = Double.parseDouble(alturaText.getText().toString());
-        double resultado = base*altura;
-        String u = ""+resultado;
+        double resultado;
+
+        try{
+        resultado = Double.parseDouble(baseText.getText().toString()) * Double.parseDouble(alturaText.getText().toString()); // base*altura
+        }catch (Exception e){
+            Toast erro = Toast.makeText(getApplicationContext(), "Entrada inválida!", Toast.LENGTH_SHORT);
+            erro.show();
+            return;
+        }
 
         Bundle mochila = new Bundle(getClassLoader());
         mochila.putDouble("resultado", resultado);
         Intent intencao = new Intent(this, telaResultado.class);
-        int id = 0;
-        mochila.putInt("id", id);
+        mochila.putInt("id", 0);
 
         intencao.putExtras(mochila);
         startActivity(intencao);
-        //Toast t1 = Toast.makeText(getApplicationContext(), u, Toast.LENGTH_SHORT);
-        //t1.show();
     }
 
 

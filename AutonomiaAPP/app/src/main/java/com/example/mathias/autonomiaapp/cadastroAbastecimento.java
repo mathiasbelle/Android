@@ -33,22 +33,20 @@ public class cadastroAbastecimento extends AppCompatActivity {
         ArrayList<Autonomia> lista;
 
         lista = (ArrayList<Autonomia>) getIntent().getSerializableExtra("lista");
-       // Toast.makeText(getApplicationContext(), "Aqui: "+lista.get(0).getPosto(), Toast.LENGTH_SHORT).show();
 
         EditText kilometragem = (EditText) findViewById(R.id.etKilometragem);
         EditText litros = (EditText) findViewById(R.id.etLitros);
         EditText data = (EditText) findViewById(R.id.etData);
         Spinner posto = (Spinner) findViewById(R.id.spPostos);
-        double km = Double.parseDouble(kilometragem.getText().toString());
-//        double b = Double.parseDouble(litros.toString());
-//        String c = data.toString();
+        try {
+            double km = Double.parseDouble(kilometragem.getText().toString());
 
-        if(!lista.isEmpty()) {
-            if(km < lista.get(lista.size()-1).getKilometragem()) {
-                Toast.makeText(getApplicationContext(), "ERRO! A kilometragem atual não pode ser menor que a anterior!", Toast.LENGTH_SHORT).show();
-                return;
+            if (!lista.isEmpty()) {
+                if (km < lista.get(lista.size() - 1).getKilometragem()) {
+                    Toast.makeText(getApplicationContext(), "ERRO! A quilometragem atual não pode ser menor que a anterior!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
             }
-        }
 
             Autonomia novo = new Autonomia(km, Double.parseDouble(litros.getText().toString()), data.getText().toString(), posto.getSelectedItem().toString());
 
@@ -58,10 +56,9 @@ public class cadastroAbastecimento extends AppCompatActivity {
             intencao.putExtra("lista", lista);
             setResult(Activity.RESULT_OK, intencao);
             intencao.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            //startActivity(intencao);
             finish();
-
-
-
+        }catch (Exception e){
+            Toast.makeText(getApplicationContext(), "ERRO! Campo vazio!", Toast.LENGTH_SHORT).show();
+        }
     }
 }

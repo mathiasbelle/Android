@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".cadastroAbastecimento" />
-        <activity android:name=".visualizarAbastecimentos"></activity>
+        <activity android:name=".visualizarAbastecimentos" />
+        <activity android:name=".datePick"></activity>
     </application>
 
 </manifest>

@@ -28,6 +28,24 @@ public class cadastroAbastecimento extends AppCompatActivity {
 
     }
 
+    public void clicouEscolher(View quemClicou){
+
+        Intent intencao = new Intent(this, datePick.class);
+        startActivityForResult(intencao, 2);
+
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent dados) {
+
+        if (requestCode == 2) {
+            if (resultCode == Activity.RESULT_OK) {
+                String data = dados.getStringExtra("data");
+                EditText editText = (EditText) findViewById(R.id.etData);
+                editText.setText(data);
+            }
+        }
+    }
+
     public void clicouSalvar(View quemClicou){
 
         ArrayList<Autonomia> lista;
@@ -47,7 +65,6 @@ public class cadastroAbastecimento extends AppCompatActivity {
                     return;
                 }
             }
-
             Autonomia novo = new Autonomia(km, Double.parseDouble(litros.getText().toString()), data.getText().toString(), posto.getSelectedItem().toString());
 
             lista.add(novo);

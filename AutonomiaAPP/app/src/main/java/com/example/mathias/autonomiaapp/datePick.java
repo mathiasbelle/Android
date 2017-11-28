@@ -17,7 +17,7 @@ public class datePick extends AppCompatActivity {
 
     public void clicouConfirmar(View quemClicou){
         DatePicker data = (DatePicker) findViewById(R.id.dpData);
-        String dataString = ""+data.getDayOfMonth()+"/"+data.getMonth()+"/"+data.getYear();
+        String dataString = ""+data.getDayOfMonth()+"/"+(data.getMonth()+1)+"/"+data.getYear();
 
         Intent intencao = new Intent(this, cadastroAbastecimento.class);
         intencao.putExtra("data", dataString);

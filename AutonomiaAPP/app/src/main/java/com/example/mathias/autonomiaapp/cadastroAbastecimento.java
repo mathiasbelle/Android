@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import io.realm.Realm;
+
 public class cadastroAbastecimento extends AppCompatActivity {
 
 
@@ -46,11 +48,44 @@ public class cadastroAbastecimento extends AppCompatActivity {
         }
     }
 
+//    public void clicouSalvar(View quemClicou){
+//
+//        ArrayList<Autonomia> lista;
+//
+//        lista = (ArrayList<Autonomia>) getIntent().getSerializableExtra("lista");
+//
+//        EditText kilometragem = (EditText) findViewById(R.id.etKilometragem);
+//        EditText litros = (EditText) findViewById(R.id.etLitros);
+//        EditText data = (EditText) findViewById(R.id.etData);
+//        Spinner posto = (Spinner) findViewById(R.id.spPostos);
+//        try {
+//            double km = Double.parseDouble(kilometragem.getText().toString());
+//
+//            if (!lista.isEmpty()) {
+//                if (km < lista.get(lista.size() - 1).getKilometragem()) {
+//                    Toast.makeText(getApplicationContext(), "ERRO! A quilometragem atual não pode ser menor que a anterior!", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
+//            }
+//            Autonomia novo = new Autonomia(km, Double.parseDouble(litros.getText().toString()), data.getText().toString(), posto.getSelectedItem().toString());
+//
+//            lista.add(novo);
+//
+//            Intent intencao = new Intent(this, MainActivity.class);
+//            intencao.putExtra("lista", lista);
+//            setResult(Activity.RESULT_OK, intencao);
+//            intencao.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//            finish();
+//        }catch (Exception e){
+//            Toast.makeText(getApplicationContext(), "ERRO! Campo vazio!", Toast.LENGTH_SHORT).show();
+//        }
+//    }
+
     public void clicouSalvar(View quemClicou){
 
-        ArrayList<Autonomia> lista;
+        //ArrayList<Autonomia> lista;
 
-        lista = (ArrayList<Autonomia>) getIntent().getSerializableExtra("lista");
+       // lista = (ArrayList<Autonomia>) getIntent().getSerializableExtra("lista");
 
         EditText kilometragem = (EditText) findViewById(R.id.etKilometragem);
         EditText litros = (EditText) findViewById(R.id.etLitros);
@@ -58,22 +93,40 @@ public class cadastroAbastecimento extends AppCompatActivity {
         Spinner posto = (Spinner) findViewById(R.id.spPostos);
         try {
             double km = Double.parseDouble(kilometragem.getText().toString());
+//
+//            if (!lista.isEmpty()) {
+//                if (km < lista.get(lista.size() - 1).getKilometragem()) {
+//                    Toast.makeText(getApplicationContext(), "ERRO! A quilometragem atual não pode ser menor que a anterior!", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
+//            }
 
-            if (!lista.isEmpty()) {
-                if (km < lista.get(lista.size() - 1).getKilometragem()) {
-                    Toast.makeText(getApplicationContext(), "ERRO! A quilometragem atual não pode ser menor que a anterior!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-            }
-            Autonomia novo = new Autonomia(km, Double.parseDouble(litros.getText().toString()), data.getText().toString(), posto.getSelectedItem().toString());
 
-            lista.add(novo);
+
+           Realm realm = Realm.getDefaultInstance();
+           realm.beginTransaction();
+
+            Autonomia a = realm.createObject(Autonomia.class);
+            a.setKilometragem(km);
+            a.setLitros(Double.parseDouble(litros.getText().toString()));
+            a.setDataA(data.getText().toString());
+            a.setPosto(posto.getSelectedItem().toString());
+           // Autonomia novo = new Autonomia(km, Double.parseDouble(litros.getText().toString()), data.getText().toString(), posto.getSelectedItem().toString());
+
+
+
+
+            realm.copyFromRealm(a);
+            realm.commitTransaction();
+
+
+            //lista.add(a);
 
             Intent intencao = new Intent(this, MainActivity.class);
-            intencao.putExtra("lista", lista);
-            setResult(Activity.RESULT_OK, intencao);
+           // intencao.putExtra("lista", lista);
+           // setResult(Activity.RESULT_OK, intencao);
             intencao.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            finish();
+            startActivity(intencao);
         }catch (Exception e){
             Toast.makeText(getApplicationContext(), "ERRO! Campo vazio!", Toast.LENGTH_SHORT).show();
         }

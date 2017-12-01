@@ -1,16 +1,21 @@
 package com.example.mathias.autonomiaapp;
 
 import java.io.Serializable;
+import io.realm.RealmObject;
 
 /**
  * Created by Mathias on 25/11/2017.
  */
 
-public class Autonomia implements Serializable {
+public class Autonomia extends RealmObject implements Serializable {
     private double kilometragem;
     private double litros;
     private String dataA;
     private String posto;
+
+    public Autonomia(){
+
+    }
 
     public Autonomia(double kilometragem, double litros, String dataA, String posto){
         this.kilometragem = kilometragem;

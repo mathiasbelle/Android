@@ -100,6 +100,8 @@
 
     <EditText
         android:id="@+id/etData"
+        android:onClick="clicouEscolher"
+        android:focusableInTouchMode="false"
         android:layout_width="249dp"
         android:layout_height="41dp"
         android:layout_marginBottom="8dp"
@@ -165,24 +167,5 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spPostos"
         app:layout_constraintVertical_bias="0.897" />
-
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="110dp"
-        android:layout_height="51dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:onClick="clicouEscolher"
-        android:text="Escolher data"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.529"
-        app:layout_constraintLeft_toRightOf="@+id/etData"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.487"
-        tools:layout_editor_absoluteX="282dp"
-        tools:layout_editor_absoluteY="230dp" />
 
 </android.support.constraint.ConstraintLayout>

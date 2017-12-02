@@ -9,8 +9,9 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 /**
- * Created by Mathias on 25/11/2017.
+ * Created by Mathias on 02/12/2017.
  */
+
 
 public class AutonomiaAdapter extends RecyclerView.Adapter {
 

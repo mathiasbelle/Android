@@ -1,9 +1,9 @@
 package com.example.mathias.autonomiaapp;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
 import android.widget.DatePicker;
 
@@ -23,6 +23,5 @@ public class datePick extends AppCompatActivity {
         intencao.putExtra("data", dataString);
         setResult(Activity.RESULT_OK, intencao);
         finish();
-
     }
 }

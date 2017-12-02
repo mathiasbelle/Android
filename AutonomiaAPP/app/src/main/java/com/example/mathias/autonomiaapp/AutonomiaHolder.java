@@ -6,7 +6,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
- * Created by Mathias on 26/11/2017.
+ * Created by Mathias on 02/12/2017.
  */
 
 public class AutonomiaHolder extends RecyclerView.ViewHolder {
